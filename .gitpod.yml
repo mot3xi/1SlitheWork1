@@ -22,19 +22,18 @@ tasks:
     openMode: split-right
 
 # This is harhat the EthereumD Developmetn Environment 
-  - name: Install hardhat, truffle, truffle-flattener 
+  - name: Install hardhat
     init: |
       gp sync-done hardhat
       npm install --save-dev hardhat
     openMode: split-right 
 
 # This is harhat the EthereumD Developmetn Environment 
-  - name: Install hardhat
+  - name: Install truffle
     init: |
       gp sync-await hardhat
-      npm install -g 
+      npm install -g truffle 
     openMode: split-right 
-
 
 # This is the actual analyzer 
   - name: Install Slither 
