@@ -1,0 +1,57 @@
+# Gitpod Init these are tasks that need to be run in prebuild
+
+tasks:
+
+  # This is the solidity compiler required by solidity 
+  - name: Install solc
+    init: |
+      gp sync-done ipyd3
+      sudo apt-get install -y python3-dev
+      sudo add-apt-repository -y ppa:ethereum/ethereum
+      sudo apt-get update -y  
+      sudo apt-get install -y solc
+    command: solc
+    openMode: split-right
+
+# This is solc-select which is for selecting different versions of he compiler 
+  - name : Install solc-select 
+    init: |
+      gp sync-await ipyd3
+      pip3 install solc-select
+    command: solc-select 
+    openMode: split-right
+
+# This is harhat the EthereumD Developmetn Environment 
+  - name: Install hardhat, truffle, truffle-flattener 
+    init: |
+      gp sync-done hardhat
+      npm install --save-dev hardhat
+    openMode: split-right 
+
+# This is harhat the EthereumD Developmetn Environment 
+  - name: Install hardhat
+    init: |
+      gp sync-await hardhat
+      npm install -g 
+    openMode: split-right 
+
+
+# This is the actual analyzer 
+  - name: Install Slither 
+    init: |
+      gp sync-await ipyd3
+      pip3 install slither-analyzer
+    command: slither
+    openMode: split-right 
+    
+# Work here tab
+  - name: WorkHere 
+    init: |
+      gp sync-await ipyd3
+    command: echo 'Workhere haha'
+    openMode: tab-after
+
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+  - port: 3000
+    onOpen: open-preview
