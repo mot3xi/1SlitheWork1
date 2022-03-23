@@ -42,7 +42,23 @@ tasks:
       pip3 install slither-analyzer
     command: slither
     openMode: split-right 
-    
+
+# This is the actual analyzer 
+  - name: Install Manticore
+    init: |
+      gp sync-await ipyd3
+      pip install manticore
+    command: manticore 
+    openMode: split-right 
+
+# This is the actual analyzer 
+  - name: Install Echidna 
+    init: |
+      gp sync-await ipyd3
+      nix-env -i -f https://github.com/crytic/echidna/tarball/master
+    command: echidna-test
+    openMode: split-right
+
 # Work here tab
   - name: WorkHere 
     init: |
